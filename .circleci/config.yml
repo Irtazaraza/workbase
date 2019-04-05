@@ -220,10 +220,10 @@ workflows:
           requires:
             - test-linux
             - test-mac
-      - assemble-mac:
-          filters:
-            branches:
-              only: master
+      - assemble-mac
+          # filters:
+          #   branches:
+          #     only: master
           requires:
             - test-linux
             - test-mac
