@@ -220,17 +220,17 @@ workflows:
           requires:
             - test-linux
             - test-mac
-      - assemble-mac
-          # filters:
-          #   branches:
-          #     only: master
-          requires:
-            - test-linux
-            - test-mac
-      - assemble-windows:
+      - assemble-mac:
           filters:
             branches:
               only: master
+          requires:
+            - test-linux
+            - test-mac
+      - assemble-windows
+          # filters:
+          #   branches:
+          #     only: master
       - cache-distribution:
           filters:
             branches:
