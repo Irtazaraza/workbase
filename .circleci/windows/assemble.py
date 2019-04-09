@@ -24,6 +24,26 @@ def lprint(msg):
 
 
 def ssh(command, ssh_host, ssh_user, ssh_pass, attempts=5):
+    test = [
+        'sshpass',
+        '-p',
+        ssh_pass,
+        'ssh',
+        '-o',
+        'StrictHostKeyChecking=no',
+        '-o',
+        'ConnectTimeout=2',
+        '-o',
+        'ConnectionAttempts={}'.format(attempts),
+        '{}@{}'.format(ssh_user, ssh_host),
+        command
+    ]
+    lprint('--------------')
+
+    lprint(test)
+
+    lprint('--------------')
+
     sp.check_call([
         'sshpass',
         '-p',
@@ -214,6 +234,8 @@ try:
         'cd repo',
         'bazel run @nodejs//:bin/npm.cmd -- run unit'
     ]), instance_ip, 'circleci', instance_password)
+
+
 
     lprint('[Remote]: running npm run integration')
     ssh(' && '.join([
