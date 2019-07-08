@@ -258,6 +258,7 @@ try:
     ]), instance_ip, 'circleci', instance_password)
 
 finally:
+    lprint('hello')
     # lprint('Remove instance')
     # sp.check_call([
     #     'gcloud', '--quiet', 'compute', 'instances',
