@@ -21,7 +21,6 @@ afterAll(async () => {
 
 describe('Canvas Data', () => {
   test('initialize workbase', async () => {
-    await app.browserWindow.focus();
     const visible = await app.browserWindow.isVisible();
     assert.equal(visible, true);
   });
