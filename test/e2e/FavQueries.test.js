@@ -8,7 +8,7 @@ jest.setTimeout(30000);
 
 const app = new Application({
   path: electronPath,
-  args: [path.join(__dirname, '../../dist/electron/main.js')],
+  args: [path.join(__dirname, '../../dist/electron/', 'main.js')],
 });
 
 beforeAll(async () => app.start());
@@ -22,7 +22,6 @@ afterAll(async () => {
 
 describe('Favourite queries', () => {
   test('initialize workbase', async () => {
-    sleep(10000);
     const visible = await app.browserWindow.isVisible();
     assert.equal(visible, true);
   });
