@@ -1,14 +1,20 @@
 const Application = require('spectron').Application;
 const assert = require('assert');
-const electronPath = require('electron'); // Require Electron from the binaries included in node_modules.
+const electron = require('electron'); // Require Electron from the binaries included in node_modules.
 const path = require('path');
 
 const sleep = time => new Promise(r => setTimeout(r, time));
 jest.setTimeout(30000);
 
+function getElectronPath() {
+  let electronPath = electron;
+  if (process.platform.includes('win')) electronPath += '.cmd';
+  return electronPath;
+}
+
 const app = new Application({
-  path: electronPath,
-  args: [path.join(__dirname, '../../dist/electron/', 'main.js')],
+  path: getElectronPath(),
+  args: [path.join(__dirname, '../../dist/electron/main.js')],
 });
 
 beforeAll(async () => app.start());
@@ -19,6 +25,7 @@ afterAll(async () => {
   }
   return undefined;
 });
+
 
 describe('Favourite queries', () => {
   test('initialize workbase', async () => {
