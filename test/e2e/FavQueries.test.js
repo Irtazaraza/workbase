@@ -22,7 +22,7 @@ afterAll(async () => {
 
 describe('Favourite queries', () => {
   test('initialize workbase', async () => {
-    await app.browserWindow.focus();
+    sleep(10000);
     const visible = await app.browserWindow.isVisible();
     assert.equal(visible, true);
   });
