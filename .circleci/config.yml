@@ -234,7 +234,7 @@ workflows:
       - assemble-windows:
           filters:
             branches:
-              only: master
+              ignore: workbase-release-branch
       - cache-distribution:
           filters:
             branches:
