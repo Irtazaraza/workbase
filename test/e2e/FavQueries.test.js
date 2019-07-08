@@ -8,7 +8,7 @@ jest.setTimeout(30000);
 
 function getElectronPath() {
   let electronPath = electron;
-  if (process.platform.includes('win')) electronPath += '.cmd';
+  if (process.platform.includes('win')) electronPath = path.join(__dirname, '..', 'node_modules', '.bin', 'electron.cmd');
   return electronPath;
 }
 
