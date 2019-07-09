@@ -22,6 +22,8 @@ afterAll(async () => {
 
 describe('Load neighbours', () => {
   test('initialize workbase', async () => {
+    await app.browserWindow.focus();
+    await app.browserWindow.setAlwaysOnTop(true);
     const visible = await app.browserWindow.isVisible();
     assert.equal(visible, true);
   });
