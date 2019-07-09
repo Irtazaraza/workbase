@@ -246,16 +246,17 @@ try:
         'cd C:\\Users\\circleci\\repo\\',
         'bazel run @nodejs//:bin/npm.cmd -- run unit',
         'bazel run @nodejs//:bin/npm.cmd -- run integration',
+        'bazel run @nodejs//:bin/npm.cmd -- run e2e',
         'cd bazel-genfiles/dist/grakn-core-all-windows/',
         'grakn server stop'
     ]), instance_ip, 'circleci', instance_password)
 
-    lprint('[Remote]: running npm run e2e')
-    ssh(' && '.join([
-        'refreshenv',
-        'cd repo',
-        'bazel run @nodejs//:bin/npm.cmd -- run e2e'
-    ]), instance_ip, 'circleci', instance_password)
+    # lprint('[Remote]: running npm run e2e')
+    # ssh(' && '.join([
+    #     'refreshenv',
+    #     'cd repo',
+    #     'bazel run @nodejs//:bin/npm.cmd -- run e2e'
+    # ]), instance_ip, 'circleci', instance_password)
 
 finally:
     lprint('Remove instance')
