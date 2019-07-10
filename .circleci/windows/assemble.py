@@ -213,7 +213,7 @@ try:
 
     lprint('[Remote]: running npm install')
     ssh(' && '.join([
-        'refreshenv',
+        'refreshenv', 
         'cd repo',
         'bazel run @nodejs//:bin/npm.cmd -- install'
     ]), instance_ip, 'circleci', instance_password)
@@ -260,7 +260,7 @@ try:
 
 finally:
     lprint('Remove instance')
-    sp.check_call([
-        'gcloud', '--quiet', 'compute', 'instances',
-        'delete', instance_name, '--delete-disks=all'
-    ])
+    # sp.check_call([
+    #     'gcloud', '--quiet', 'compute', 'instances',
+    #     'delete', instance_name, '--delete-disks=all'
+    # ])
